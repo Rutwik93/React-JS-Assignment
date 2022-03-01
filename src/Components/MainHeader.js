@@ -1,18 +1,13 @@
 import * as React from 'react';
 import {AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Avatar, Button, Tooltip, MenuItem} from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 import { useNavigate } from 'react-router-dom';
 import {signOut} from 'firebase/auth'
-import auth from './Config';
-
-import Badge from '@mui/material/Badge';
-import NotificationsIcon from '@mui/icons-material/Notifications';
+import {auth} from './Config';
 
 function MainHeader()
 {
     var navigate=useNavigate();
-    const pages = ['Products', 'Pricing', 'Blog'];
 
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -42,6 +37,10 @@ function MainHeader()
     var logOutUser=()=>{
       localStorage.clear();
       signOut(auth);
+    };
+
+    var handleRedirect=()=>{
+      navigate("../home", { replace: true });
     };
 
     return (
@@ -93,24 +92,22 @@ function MainHeader()
                     display: { xs: 'block', md: 'none' },
                   }}
                 >
-                  {pages.map((page) => (
-                    <MenuItem key={page} onClick={handleCloseNavMenu}>
-                      <Typography textAlign="center">{page}</Typography>
-                    </MenuItem>
-                  ))}
+                  <MenuItem onClick={handleCloseNavMenu}>
+                      <Typography textAlign="center" onClick={handleRedirect}>Home</Typography>
+                  </MenuItem>
+                  
                 </Menu>
               </Box>
               
               <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                {pages.map((page) => (
+                
                   <Button
-                    key={page}
-                    onClick={handleCloseNavMenu}
+                    onClick={handleRedirect}
                     sx={{ my: 2, color: 'white', display: 'block' }}
                   >
-                    {page}
+                    Home
                   </Button>
-                ))}
+                
               </Box>
     
               <Box sx={{ flexGrow: 0 }}>

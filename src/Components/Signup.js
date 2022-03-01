@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {Button, TextField, Grid} from '@mui/material';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
-import auth from './Config';
+import {auth} from './Config';
 import Header from './Header';
 import '../app.css';
 import { ToastContainer, toast } from 'react-toastify';
