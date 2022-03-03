@@ -63,12 +63,12 @@ function Details()
             
             <div className="mainContainer">
                 <Grid container spacing={2}>
-                    <Grid item xs={4}>
+                    <Grid item xs={12} sm={12} md={4}>
                         <Item>
                             <img src={details.URL} style={{maxWidth:"100%"}}/>
                         </Item>
                     </Grid>
-                    <Grid item xs={8}>
+                    <Grid item xs={12} sm={12} md={8}>
                         <Item sx={{textAlign:"left"}}>
                             <Typography sx={{display:"inline-block"}} sx={{color:"#2C3333"}} variant="h4" gutterBottom component="div">
                                 Name: {details.Name}

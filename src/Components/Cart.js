@@ -30,7 +30,7 @@ function Cart()
                 <MainHeader/>
                 <div className="mainContainer">
                     <Grid container spacing={2}>
-                        <Grid item xs={6} md={8}>
+                        <Grid item xs={12} sm={12} md={8} >
                         {
                             data.cartItems.map(element => {
                                 return (
@@ -71,7 +71,7 @@ function Cart()
                         }
                             
                         </Grid>
-                        <Grid item xs={6} md={4}>
+                        <Grid item xs={12} sm={12} md={4}>
                             <Item sx={{textAlign:"left"}}>
                                 
                                 <Typography sx={{display:"inline-block", color:"#2C3333"}} variant="h5" gutterBottom component="div">
