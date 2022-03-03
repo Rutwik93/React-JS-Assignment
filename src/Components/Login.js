@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {auth} from './Config';
 import {signInWithEmailAndPassword} from 'firebase/auth';
@@ -13,6 +13,11 @@ function Login()
     var [email,setEmail]=useState("");
     var [password,setPassword]=useState("");
     var navigate=useNavigate();
+
+    useEffect(()=>{
+        if(localStorage.getItem('Auth Token'))
+            navigate('/home',{replace:true})
+    })
 
     var checkLogin=async ()=>{
         try

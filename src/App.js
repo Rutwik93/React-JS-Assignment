@@ -2,8 +2,9 @@ import { Routes, Route } from "react-router-dom";
 import Login from './Components/Login';
 import Signup from './Components/Signup';
 import HomePage from './Components/HomePage';
-import Clothing from "./Components/Clothing";
-import Electronics from "./Components/Electronics";
+import Listing from "./Components/Listing";
+import Details from "./Components/Details";
+import Cart from "./Components/Cart";
 
 function App() {
   return (
@@ -11,8 +12,9 @@ function App() {
       <Route path="/" element={<Login />}/>
       <Route path="/signup" element={<Signup />} />
       <Route path="/home" element={<HomePage />} />
-      <Route path="/clothing" element={<Clothing />} />
-      <Route path="/electronics" element={<Electronics />} />
+      <Route path="/listing" element={<Listing />} />
+      <Route path="/details" element={<Details />} /> 
+      <Route path="/cart" element={<Cart />} />      
     </Routes>
   );
 }

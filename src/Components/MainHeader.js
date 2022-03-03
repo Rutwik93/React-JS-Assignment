@@ -43,6 +43,10 @@ function MainHeader()
       navigate("../home", { replace: true });
     };
 
+    var showCart=()=>{
+      navigate("../cart", { replace: true });
+    };
+
     return (
         <AppBar position="static">
           <Container maxWidth="xl">
@@ -103,7 +107,7 @@ function MainHeader()
                 
                   <Button
                     onClick={handleRedirect}
-                    sx={{ my: 2, color: 'white', display: 'block' }}
+                    sx={{ my: 2, color: 'white', display: 'block', fontWeight:"bold" }}
                   >
                     Home
                   </Button>
@@ -136,8 +140,12 @@ function MainHeader()
                   onClose={handleCloseUserMenu}
                 >
                   <MenuItem onClick={handleCloseUserMenu}>
+                      <Typography textAlign="center" onClick={() => showCart()}>View Cart</Typography>
+                  </MenuItem>
+                  <MenuItem onClick={handleCloseUserMenu}>
                       <Typography textAlign="center" onClick={() => logOutUser()}>Logout</Typography>
                   </MenuItem>
+                  
                   
                 </Menu>
                 

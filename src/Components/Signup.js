@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {Button, TextField, Grid} from '@mui/material';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
@@ -16,6 +16,11 @@ function Signup()
     var [email,setEmail]=useState("");
     var [password,setPassword]=useState("");
     var navigate=useNavigate();
+
+    useEffect(()=>{
+        if(localStorage.getItem('Auth Token'))
+            navigate('/home',{replace:true})
+    })
 
     var registerUser= async ()=>{
         try

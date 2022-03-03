@@ -11,14 +11,14 @@ function HomePage()
     var [searchParams, setSearchParams] = useSearchParams();
     var navigate=useNavigate();
 
-    function handleRedirect(path)
+    function handleRedirect(name)
     {
-        navigate("/"+path,{replace:true});
+        navigate("/listing?Category="+name,{replace:true});
     };
     
     var components=Categories.map(item => {
         return (
-            <Card sx={{ width:"40%", maxWidth: 345, margin:"3% 3% 0% 3%", display:"inline-block" }}>
+            <Card key={item.id} sx={{ maxWidth: 345, margin:"3% 3% 0% 3%", display:"inline-block" }}>
             <CardMedia
                 component="img"
                 alt="green iguana"
@@ -31,7 +31,7 @@ function HomePage()
                 </Typography>
             </CardContent>
             <CardActions style={{float:"right"}}>
-                <Button size="small" onClick={()=>{handleRedirect(item.Path)}}>View Category</Button>
+                <Button size="small" onClick={()=>{handleRedirect(item.Name)}}>View Category</Button>
             </CardActions>
         </Card>
         )

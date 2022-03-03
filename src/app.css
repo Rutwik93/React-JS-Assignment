@@ -3,10 +3,40 @@
     text-align: center;
     
 }
-
 .myform
 {
     width: 30%;
     margin: auto;
     margin-top: 10%;
+}
+
+.mainContainer
+{
+    margin:auto;
+    margin-top: 2%;
+    width: 95%;
+}
+
+.cartItem
+{
+    margin-bottom: 2%;
+}
+
+.txtCenter
+{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    color:#1976d2;
+    left: 50%;
+    font-size:3rem;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.quantityCounter
+{
+    margin-left: 1rem;
+    margin-right: 1rem;
+    font-size:20px;
 }
