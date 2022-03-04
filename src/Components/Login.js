@@ -24,7 +24,7 @@ function Login()
         {
             var res=await signInWithEmailAndPassword(auth,email,password);
             localStorage.setItem('Auth Token', res._tokenResponse.refreshToken);
-            localStorage.setItem('User ID',auth.currentUser.uid);
+            localStorage.setItem('UID',auth.currentUser.uid);
             localStorage.setItem('Name',auth.currentUser.displayName);
             localStorage.setItem('EMAIL',auth.currentUser.email);
             navigate("/home", { replace: true });
@@ -49,11 +49,11 @@ function Login()
                 <div className='myform'>
                     <h1 style={{color:"#1976d2"}}>Login</h1>
                     <Grid container mb={2} spacing={2}>
-                        <Grid item md={6}>
-                            <TextField id="email" label="E-Mail Address" type="email" variant="outlined" onChange={(event)=>{setEmail(event.target.value)}}/>
+                        <Grid item xs={12} sm={12} md={6}>
+                            <TextField id="email" label="E-Mail Address" type="email" fullWidth variant="outlined" onChange={(event)=>{setEmail(event.target.value)}}/>
                         </Grid>
-                        <Grid item md={6}>
-                            <TextField id="password" label="Password" type="password" variant="outlined" onChange={(event)=>{setPassword(event.target.value)}}/><br/>
+                        <Grid item xs={12} sm={12} md={6}>
+                            <TextField id="password" label="Password" type="password" fullWidth variant="outlined" onChange={(event)=>{setPassword(event.target.value)}}/><br/>
                         </Grid>
                     </Grid>
 

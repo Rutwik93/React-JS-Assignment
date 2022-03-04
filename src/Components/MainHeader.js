@@ -44,7 +44,11 @@ function MainHeader()
     };
 
     var showCart=()=>{
-      navigate("../cart", { replace: true });
+      navigate("../cart");
+    };
+
+    var showOrders=()=>{
+      navigate("../orders");
     };
 
     return (
@@ -141,6 +145,9 @@ function MainHeader()
                 >
                   <MenuItem onClick={handleCloseUserMenu}>
                       <Typography textAlign="center" onClick={() => showCart()}>View Cart</Typography>
+                  </MenuItem>
+                  <MenuItem onClick={handleCloseUserMenu}>
+                      <Typography textAlign="center" onClick={() => showOrders()}>View Orders</Typography>
                   </MenuItem>
                   <MenuItem onClick={handleCloseUserMenu}>
                       <Typography textAlign="center" onClick={() => logOutUser()}>Logout</Typography>

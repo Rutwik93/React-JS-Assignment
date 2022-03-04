@@ -1,5 +1,4 @@
-import {Button, AppBar, Typography, Box, Toolbar} from '@mui/material';
-import IconButton from '@mui/material/IconButton';
+import {Button, AppBar, Typography, Box, Toolbar, IconButton} from '@mui/material';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 import { useNavigate } from "react-router-dom";
 

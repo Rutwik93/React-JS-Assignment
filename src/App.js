@@ -5,6 +5,8 @@ import HomePage from './Components/HomePage';
 import Listing from "./Components/Listing";
 import Details from "./Components/Details";
 import Cart from "./Components/Cart";
+import SuccessPage from "./Components/SuccessPage";
+import Orders from "./Components/Orders";
 
 function App() {
   return (
@@ -14,7 +16,9 @@ function App() {
       <Route path="/home" element={<HomePage />} />
       <Route path="/listing" element={<Listing />} />
       <Route path="/details" element={<Details />} /> 
-      <Route path="/cart" element={<Cart />} />      
+      <Route path="/cart" element={<Cart />} />
+      <Route path="/success" element={<SuccessPage />} />   
+      <Route path="/orders" element={<Orders />} />
     </Routes>
   );
 }

@@ -1,8 +1,11 @@
 import MainHeader from './MainHeader';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeFromCart } from '../features/cartSlice';
+import { removeFromCart, emptyCartOnOrder } from '../features/cartSlice';
 import {styled, Typography, Paper, Grid, Button} from '@mui/material';
 import { ToastContainer, toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+import { db } from "./Config";
+import { collection, addDoc } from "firebase/firestore";
 import 'react-toastify/dist/ReactToastify.css';
 
 var Item = styled(Paper)(({ theme }) => ({
@@ -17,10 +20,24 @@ function Cart()
 {
     var data=useSelector(state => state.cart);
     var dispatch=useDispatch();
+    var navigate=useNavigate();
 
     var handleDeleteItem=(id)=>{
         dispatch(removeFromCart({id:id}));
         toast.success("Item removed from cart!",{position: toast.POSITION.BOTTOM_RIGHT});
+    };
+    
+    var handleOrder=async ()=>{
+        const usersCollectionRef = await collection(db, "Orders");
+        var dt=new Date();
+        var res=await addDoc(usersCollectionRef, { 
+            UID:localStorage.getItem('UID'),
+            Date: dt.getDate()+"-"+(dt.getMonth()+1)+"-"+dt.getFullYear(),
+            OrderTotal:data.totalAmount,
+            Items: data.cartItems
+         });
+         dispatch(emptyCartOnOrder());
+         navigate("/success?orderID="+res.id, { replace: true });
     };
 
     if(data.totalItems>0)
@@ -35,9 +52,8 @@ function Cart()
                             data.cartItems.map(element => {
                                 return (
                                     <Item key={element.id} className="cartItem">
-                                        
                                         <Grid container spacing={2}>
-                                            <Grid item xs={3} >
+                                            <Grid item xs={12} sm={12} md={3}>
                                                 <Item>
                                                 <img
                                                     src={element.URL}
@@ -47,7 +63,7 @@ function Cart()
                                                 />                                                    
                                                 </Item>
                                             </Grid>
-                                            <Grid item xs={9} >
+                                            <Grid item xs={12} sm={12} md={9} >
                                                 <Item sx={{textAlign:"left"}}>
                                                     <Typography sx={{display:"inline-block", color:"#2C3333"}}variant="h5" gutterBottom component="div">
                                                         {element.Name}
@@ -86,8 +102,9 @@ function Cart()
                                 <Typography sx={{float:"right",display:"inline-block", color:"#2C3333"}} variant="h5" gutterBottom component="div">
                                     ₹{data.totalAmount}
                                 </Typography>
+                                <Button variant="contained" style={{width:"100%", fontSize:"15px", fontWeight:"bold"}} onClick={()=>{handleOrder()}}>Place Order</Button>
                             </Item>
-                        </Grid>   
+                        </Grid>
                     </Grid>
                 </div>   
                 <ToastContainer/>         

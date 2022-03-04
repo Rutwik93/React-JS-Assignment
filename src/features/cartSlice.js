@@ -64,10 +64,16 @@ var cartSlice = createSlice({
                     state.cartItems.splice(i,1);
                 }
             }
+        },
+        emptyCartOnOrder(state)
+        {
+            state.cartItems=[];
+            state.totalItems= 0;
+            state.totalAmount=0;
         }
     }
 });
 
-export var {addToCart, removeFromCart} = cartSlice.actions;
+export var {addToCart, removeFromCart, emptyCartOnOrder} = cartSlice.actions;
 
 export default cartSlice.reducer;

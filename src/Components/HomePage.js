@@ -13,7 +13,7 @@ function HomePage()
 
     function handleRedirect(name)
     {
-        navigate("/listing?Category="+name,{replace:true});
+        navigate("/listing?Category="+name);
     };
     
     var components=Categories.map(item => {

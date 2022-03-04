@@ -56,7 +56,6 @@ function Details()
             setCounter(counter-1);
     };
     
-
     return (
         <>
             <MainHeader/>
